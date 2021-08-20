@@ -24,122 +24,6 @@ email=sydjaja007@gmail.com
 wget -O /etc/pam.d/common-password "https://github.com/wehoi/ws/raw/main/password"
 chmod +x /etc/pam.d/common-password
 
-# go to root
-cd
-echo 'get ssh ws'
-wget -q -O /usr/local/bin/ssh-ws "https://scrzoke.000webhostapp.com/direct.py" && chmod +x /usr/local/bin/ssh-ws
-sed -i "s/YouKnowMe/22/g" /usr/local/bin/ssh-ws
-echo 'get ssh ws ssl'
-wget -q -O /usr/local/bin/ssh-ws-ssl "https://scrzoke.000webhostapp.com/direct.py" && chmod +x /usr/local/bin/ssh-ws
-sed -i "s/YouKnowMe/143/g" /usr/local/bin/ssh-ws-ssl
-echo 'get ssh ws ssl'
-wget -q -O /usr/local/bin/ssh-ws-ovpn "https://scrzoke.000webhostapp.com/direct.py" && chmod +x /usr/local/bin/ssh-ws
-sed -i "s/YouKnowMe/443/g" /usr/local/bin/ssh-ws-ovpn
-
-# Installing Service
-cat > /etc/systemd/system/sshws.service << END
-[Unit]
-Description=Switching Protocols
-Documentation=www.aj-net.com
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ssh-ws 2082
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-cat > /etc/systemd/system/sshwstls.service << END
-[Unit]
-Description=Switching Protocols
-Documentation=www.aj-net.com
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ssh-ws-ssl 800
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-cat > /etc/systemd/system/sshwsovpn.service << END
-[Unit]
-Description=Switching Protocols
-Documentation=www.aj-net.com
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ssh-ws-ovpn 2084
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-
-# Install OHP server
-echo 'Installing ohpserver'
-wget -q -O /usr/bin/ohp https://scrzoke.000webhostapp.com/ohp && chmod +x /usr/bin/ohp
-
-# Setup ohpserver http
-echo 'Setup ohpserver'
-cat > /etc/systemd/system/ohpssh.service << END
-[Unit]
-Description=Daemonize OpenHTTP Puncher Server
-Wants=network.target
-After=network.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/ohp -port 8181 -proxy 127.0.0.1:8080 -tunnel 127.0.0.1:22
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# Setup ohpserver openvpn
-echo 'Setup ohpserver'
-cat > /etc/systemd/system/ohpovpn.service << END
-[Unit]
-Description=Daemonize OpenHTTP Puncher Server
-Wants=network.target
-After=network.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/ohp -port 8282 -proxy 127.0.0.1:8080 -tunnel 127.0.0.1:443
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
 
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
@@ -281,9 +165,6 @@ connect = 127.0.0.1:22
 accept = 442
 connect = 127.0.0.1:1194
 
-[ws-stunnel]
-accept = 2096
-connect = 700
 
 END
 
