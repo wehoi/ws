@@ -94,4 +94,4 @@ clear
 	echo -e "*****************************"
 	echo -e "Link OBFS link : $linkss2"
 	echo -e "*****************************"
-        echo -e "Script By AJ" 
+        echo -e "Script By YOGA CANDRA KIRANA" 
