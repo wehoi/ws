@@ -84,12 +84,13 @@ echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo ""
-echo "   - LINE                    : aj07"  | tee -a log-install.txt
-echo "   - Whatsapp                : +6017992548"  | tee -a log-install.txt
+echo "   - Owner                   : YOGA CANDRA KIRANA" | tee -a log-install.txt
+echo "   - Telegram                : @Kamatari"  | tee -a log-install.txt
+echo "   - Whatsapp                : +6285600174618"  | tee -a log-install.txt
 echo ""
-echo "--------------------------Script By jAvaNet------------------------" | tee -a log-install.txt
+echo "--------------------------Script By YOGA CANDRA KIRANA ------------------------" | tee -a log-install.txt
 echo ""
-echo " type "roboot" to rebooting your server "  | tee -a log-install.txt
+echo " type "roboot" to reboot your server "  | tee -a log-install.txt
 sleep 10
 rm -f setup.sh
 
