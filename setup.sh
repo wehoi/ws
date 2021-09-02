@@ -3,8 +3,13 @@ if [ -f "/etc/v2ray/domain" ]; then
 echo " the script already installed"
 exit 0
 fi
+mkdir /etc/v2ray
 mkdir /var/lib/premium-script;
-echo "IP=" >> /var/lib/premium-script/ipvps.conf
+clear
+echo "กรุณาใส่โดเมน"
+read -p "Hostname / Domain: " host
+echo "IP=$host" >> /var/lib/premium-script/ipvps.conf
+echo "$host" >> /etc/v2ray/domain
 #รันโอเพ่นวีพีเอน
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #รันวีทูเรย์
