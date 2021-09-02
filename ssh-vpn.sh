@@ -260,11 +260,8 @@ apt -y install dos2unix
 
 # download script
 cd /usr/bin
-wget -O add "https://github.com/wehoi/ws/raw/main/add-host.sh"
 wget -O menu "https://github.com/wehoi/ws/raw/main/menu.sh"
-wget -O thmenu "https://github.com/wehoi/ws/raw/main/thmenu.sh"
 wget -O new "https://github.com/wehoi/ws/raw/main/usernew.sh"
-wget -O trial "https://github.com/wehoi/ws/raw/main/trial.sh"
 wget -O del "https://github.com/wehoi/ws/raw/main/hapus.sh"
 wget -O user "https://github.com/wehoi/ws/raw/main/member.sh"
 wget -O deluser "https://github.com/wehoi/ws/raw/main/delete.sh"
@@ -281,21 +278,14 @@ wget -O clear-log "https://github.com/wehoi/ws/raw/main/clear-log.sh"
 wget -O port "https://github.com/wehoi/ws/raw/main/change.sh"
 wget -O port-ovpn "https://github.com/wehoi/ws/raw/main/port-ovpn.sh"
 wget -O port-ssl "https://github.com/wehoi/ws/raw/main/port-ssl.sh"
-wget -O port-wg "https://github.com/wehoi/ws/raw/main/port-wg.sh"
 wget -O port-tr "https://github.com/wehoi/ws/raw/main/port-tr.sh"
 wget -O port-squid "https://github.com/wehoi/ws/raw/main/port-squid.sh"
 wget -O port-ws "https://github.com/wehoi/ws/raw/main/port-ws.sh"
 wget -O port-vless "https://github.com/wehoi/ws/raw/main/port-vless.sh"
 wget -O web "https://github.com/wehoi/ws/raw/main/webmin.sh"
 wget -O xp "https://github.com/wehoi/ws/raw/main/xp.sh"
-wget -O kernel "https://github.com/wehoi/ws/raw/main/kernel-update.sh"
-wget -O update "https://github.com/wehoi/ws/raw/main/update.sh"
-wget -O limit "https://github.com/wehoi/ws/raw/main/ser-limit.sh" 
-chmod +x add
 chmod +x menu
-chmod +x thmenu
 chmod +x new
-chmod +x trial
 chmod +x del
 chmod +x user
 chmod +x deluser
@@ -312,16 +302,12 @@ chmod +x clear-log
 chmod +x port
 chmod +x port-ovpn
 chmod +x port-ssl
-chmod +x port-wg
 chmod +x port-tr
 chmod +x port-squid
 chmod +x port-ws
 chmod +x port-vless
 chmod +x web
 chmod +x xp
-chmod +x kernel
-chmod +x update
-chmod +x limit
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
