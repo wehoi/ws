@@ -3,7 +3,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-echo "Processing"
+echo "กำลังดำเนินการ"
 clear
 uuid=$(cat /etc/trojan/uuid.txt)
 source /var/lib/premium-script/ipvps.conf
@@ -14,16 +14,16 @@ domain=$IP
 fi
 tr="$(cat ~/log-install.txt | grep -i Trojan | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password: " -e user
+		read -rp "รหัสผ่าน: " -e user
 		user_EXISTS=$(grep -w $user /etc/trojan/akun.conf | wc -l)
 
 		if [[ ${user_EXISTS} == '1' ]]; then
 			echo ""
-			echo "The name is already in use, please choose another name."
+			echo "มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
 			exit 1
 		fi
 	done
-read -p "Expire (days): " masaaktif
+read -p "จำนวนวันใช้งาน: " masaaktif
 sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan/akun.conf
@@ -32,13 +32,13 @@ trojanlink="trojan://${user}@${domain}:${tr}"
 clear
 echo -e ""
 echo -e "*********************************"
-echo -e "         Account Details"
+echo -e "         ข้อมูลบันชี"
 echo -e ""
-echo -e "Remarks        : ${user}"
-echo -e "Host/IP        : ${domain}"
-echo -e "port           : ${tr}"
-echo -e "Key            : ${user}"
-echo -e "Expiry date    : $exp"
-echo -e "link           : ${trojanlink}"
+echo -e "ชื่อ​           : ${user}"
+echo -e "โฮสต์​         : ${domain}"
+echo -e "พอร์ต         : ${tr}"
+echo -e "คีย์​           : ${user}"
+echo -e "วันหมดอายุ​     : $exp"
+echo -e "ลิงค์​          : ${trojanlink}"
 echo -e "*********************************"
-echo -e "Script By YOGA CANDRA KIRANA" 
+echo -e "สคริปโดยเอเจ" 
