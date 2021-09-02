@@ -32,7 +32,7 @@ trojanlink="trojan://${user}@${domain}:${tr}"
 clear
 echo -e ""
 echo -e "*********************************"
-echo -e "         ข้อมูลบันชี"
+echo -e "         ข้อมูลบัญชี"
 echo -e ""
 echo -e "ชื่อ​           : ${user}"
 echo -e "โฮสต์​         : ${domain}"
