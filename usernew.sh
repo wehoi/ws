@@ -3,7 +3,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-echo "Processing"
+echo "กำลังดำเนินการ"
 clear
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP" = "" ]]; then
@@ -11,9 +11,9 @@ domain=$(cat /etc/v2ray/domain)
 else
 domain=$IP
 fi
-read -p "Username : " Login
-read -p "Password : " Pass
-read -p "Expire (days): " masaaktif
+read -p "ชื่อ : " Login
+read -p "รหัสผ่าน : " Pass
+read -p "จำนวนวันใช้งาน : " masaaktif
 
 IP=$(wget -qO- icanhazip.com);
 ssl="$(cat ~/log-install.txt | grep -w "Stunnel4" | cut -d: -f2)"
@@ -22,14 +22,14 @@ ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | c
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 sleep 1
 echo Ping Host
-echo Permission validating...
+echo ตรวจสอบใบอนุญาต...
 sleep 0.5
-echo Permission accepted
+echo ได้รับอนุญาต​
 clear
 sleep 0.5
-echo Creating account: $Login
+echo กำลังสร้างบัญชี: $Login
 sleep 0.5
-echo Generating password: $Pass
+echo กำลังสร้างรหัสผ่าน: $Pass
 sleep 0.5
 clear
 useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
@@ -37,12 +37,12 @@ exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 echo -e ""
 echo -e "**********************************************"
-echo -e "                 Account Details"
-echo -e "IP             :  $IP"
-echo -e "Host           :  $domain" 
-echo -e "Username       :  $Login"
-echo -e "Password       :  $Pass"
-echo -e "Exp Date       :  $exp"
+echo -e "                 ข้อมูลบัญชี"
+echo -e "ไอพี            :  $IP"
+echo -e "โฮสต์           :  $domain" 
+echo -e "ชื่อ​             :  $Login"
+echo -e "รหัสผ่าน​         :  $Pass"
+echo -e "วันหมดอายุ       :  $exp"
 echo -e "**********************************************"
 echo -e "                SSH SSL" 
 echo -e "OpenSSH        :  22"
@@ -55,8 +55,8 @@ echo -e "                OVPN"
 echo -e "OVPN TCP       :  $ovpn"
 echo -e "OVPN UDP       :  $ovpn2"
 echo -e "OVPN SSL       :  442"
-echo -e "TCP conf link  :  http://$IP:81/TCP.ovpn"
-echo -e "UDP conf link  :  http://$IP:81/UDP.ovpn"
-echo -e "SSL conf link  :  http://$IP:81/SSL.ovpn"
+echo -e "TCP conf ลิงค์​   :  http://$IP:81/TCP.ovpn"
+echo -e "UDP conf ลิงค์​   :  http://$IP:81/UDP.ovpn"
+echo -e "SSL conf ลิงค์​   :  http://$IP:81/SSL.ovpn"
 echo -e "**********************************************"
-echo -e "Script By YOGA CANDRA KIRANA" 
+echo -e "สคริปโดยเอเจ" 
