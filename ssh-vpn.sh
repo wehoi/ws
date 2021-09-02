@@ -1,5 +1,5 @@
 #!/bin/bash
-# By jAvaNet
+# สคริป​โดย​ AJ
 #
 # ==================================================
 
@@ -11,7 +11,7 @@ NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 source /etc/os-release
 ver=$VERSION_ID
 
-#detail nama perusahaan
+#ข้อมูล
 country=TH
 state=Thailand
 locality=Thailand
