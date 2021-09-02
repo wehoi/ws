@@ -3,7 +3,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-echo "Processing"
+echo "กำลังดำเนินการ"
 clear
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP" = "" ]]; then
@@ -14,17 +14,17 @@ fi
 tls="$(cat ~/log-install.txt | grep -w "Vless TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vless None TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
+		read -rp "ชื่อ: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/vless.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
-			echo "The name is already in use, please choose another name."
+			echo "มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
 			exit 1
 		fi
 	done
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "Expire (days): " masaaktif
+read -p "จำนวนวันใช้งาน: " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/v2ray/vless.json
@@ -37,20 +37,20 @@ systemctl restart v2ray@vnone
 clear
 echo -e ""
 echo -e "*********************************"
-echo -e "         Account Details"
+echo -e "         ขู้อมูลบัญชี"
 echo -e ""
-echo -e "Remarks        : ${user}"
-echo -e "Domain         : ${domain}"
-echo -e "TLS port       : $tls"
-echo -e "None-TLS port  : $none"
-echo -e "id             : ${uuid}"
-echo -e "Encryption     : none"
-echo -e "network        : ws"
-echo -e "path           : /v2ray"
-echo -e "Expiry date    : $exp"
+echo -e "ชื่อ​             : ${user}"
+echo -e "โดเมน​           : ${domain}"
+echo -e "TLS พอร์ต       : $tls"
+echo -e "HTTP พอร์ต      : $none"
+echo -e "ไอดี            : ${uuid}"
+echo -e "รหัสลับ​          : none"
+echo -e "เน็ตเวิร์ค​         : ws"
+echo -e "เส้นทาง          : /v2ray"
+echo -e "วันหมดอายุ​       : $exp"
 echo -e "*********************************"
-echo -e "TLS link       : ${vlesslink1}"
+echo -e "ลิงค์​ HTTP       : ${vlesslink1}"
 echo -e "*********************************"
-echo -e "None-TLS link  : ${vlesslink2}"
+echo -e "ลิงค์​ TLS​     ​   : ${vlesslink2}"
 echo -e "*********************************"
-echo -e "Script By YOGA CANDRA KIRANA" 
+echo -e "สคริปโดยเอเจ" 
