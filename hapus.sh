@@ -4,11 +4,11 @@ green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
 clear
-read -p "Username SSH to Delete : " Pengguna
+read -p "โปรดใส่ชื่อที่ต้องการลบ : " Pengguna
 
 if getent passwd $Pengguna > /dev/null 2>&1; then
         userdel $Pengguna
-        echo -e "User $Pengguna was removed."
+        echo -e "$Pengguna ถูกลบออกจากระบบแล้ว."
 else
-        echo -e "Failure: User $Pengguna Not Exist."
+        echo -e "ล้มเหลว​: ชื่อ$Pengguna​ ไม่มีในระบบ ."
 fi
