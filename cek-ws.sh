@@ -6,6 +6,7 @@ MYIP=$(wget -qO- icanhazip.com);
 clear
 echo -n > /tmp/other.txt
 data=( `cat /etc/v2ray/config.json | grep '^###' | cut -d ' ' -f 2`);
+echo -e "        สคริปโดยเอเจ"​
 echo "-------------------------------";
 echo "-----=[ Vmess User Login ]=-----";
 echo "-------------------------------";
