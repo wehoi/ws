@@ -73,7 +73,7 @@ systemctl disable --now openvpn-server@server-tcp-$ovpn > /dev/null
 systemctl enable --now openvpn-server@server-tcp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2, SSL 442/   - OpenVPN                 : TCP $vpn, UDP $ovpn2, SSL 442/g" /root/log-install.txt
 sed -i "s/$ovpn/$vpn/g" /etc/stunnel/stunnel.conf
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $vpn แก้ไขสำหรับแล้ว\e[0m"
 else
 echo "พอร์ต $vpn ถูกใช้งานแล้ว"
 fi
@@ -134,7 +134,7 @@ cp /etc/openvpn/client-udp-$vpn.ovpn /home/vps/public_html/client-udp-$vpn.ovpn
 systemctl disable --now openvpn-server@server-udp-$ovpn2 > /dev/null
 systemctl enable --now openvpn-server@server-udp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2, SSL 442/   - OpenVPN                 : TCP $ovpn, UDP $vpn, SSL 442/g" /root/log-install.txt
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $vpn แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $vpn ถูกใช้งานแล้ว"
 fi
