@@ -76,7 +76,7 @@ echo "   - LINE                    : aj07"  | tee -a log-install.txt
 echo ""
 echo "--------------------------สคริปโดยเอเจ ------------------------" | tee -a log-install.txt
 echo ""
-echo " type "roboot" to reboot your server "  | tee -a log-install.txt
+echo " อย่าลืมรีบูตด้วยเด้อ " 
 sleep 10
 rm -f setup.sh
 
