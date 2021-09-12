@@ -16,9 +16,6 @@ apt update && apt upgrade -y && update-grub && sleep 2 && reboot
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://github.com/wehoi/ws/raw/main/setup.sh && chmod +x setup.sh && screen -S setup.sh ./setup.sh
 
 ข้อมูลสคริป
-
-=================================-พรีเมี่ยมสคริป-===========================" 
---------------------------------------------------------------------------------" 
 - OpenSSH                 : 22
 - OpenVPN                 : TCP 1194, UDP 2200, SSL 442
 - Stunnel4                : 555, 777
@@ -33,9 +30,9 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.di
 - Trojan                  : 2443
 - Owner                   : เอเจ
 - LINE                    : aj07
---------------------------สคริปโดยเอเจ ------------------------
 
- ซัพพอร์ต​
+
+ซัพพอร์ต​
 
 Debian 9 & 10
 Ubuntu 18 & 20
