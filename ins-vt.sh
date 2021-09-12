@@ -515,7 +515,7 @@ chmod +x vrc
 chmod +x vsc
 chmod +x tjc
 chmod +x vrr
-cmod +x vsr
+chmod +x vsr
 chmod +x tjr
 chmod +x cert
 cd
