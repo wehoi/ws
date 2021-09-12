@@ -24,32 +24,32 @@ sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 rm -f /root/jcameron-key.asc
 clear
 echo ""
-echo " Done Install Webmin"
+echo " ติดตั้งสำเร็จแล้ว"
 echo " $IP:10000"
-echo " AutoScriptVPS By  izZuVpn"
+echo " สคริปโดยเอเจ"​
 }
 function restart () {
-echo " Restarting Webmin"
+echo " รีสตาร์ท​ เว็ปมิน"
 sleep 0.5
 service webmin restart > /dev/null 2>&1
-echo " Start Uninstall Webmin"
+echo " กำ​ลัง​รีสตาร์ทเว็ปมิน​"
 clear
 echo ""
-echo " Done Restart Webmin"
-echo " AutoScriptVPS By  izZuVpn"
+echo " รีสตาร์ท​สำเร็จ"
+echo " สคริปโดยเอเจ"​
 }
 function uninstall () {
 echo " Removing Repositori Webmin"
 rm -f /etc/apt/sources.list.d/webmin.list
 apt update > /dev/null 2>&1
-echo " Start Uninstall Webmin"
+echo " เริ่มถอนการติดตั้งเว็ปมิน"
 clear
 sleep 0.5
 apt autoremove --purge webmin -y > /dev/null 2>&1
 clear
 echo ""
-echo " Done Uninstall Webmin"
-echo " AutoScriptVPS By  izZuVpn"
+echo " ถอนการติดตั้งสำเร็จ"
+echo " สคริปโดยเอเจ"​
 }
 if [[ "$cek" = "perl" ]]; then
 sts="${Info}"
@@ -57,15 +57,15 @@ else
 sts="${Error}"
 fi
 clear
-echo -e " =============================="
-echo -e "           Webmin Menu         "
-echo -e " =============================="
-echo -e " Status $sts"
-echo -e "  1. Install Webmin"
-echo -e "  2. Restart Webmin"
-echo -e "  3. Uninstall Webmin"
-echo -e " Press CTRL+C to return"
-read -rp " Please Enter The Correct Number : " -e num
+echo -e " ******************************"
+echo -e "           เว็ปมินเมนู         "
+echo -e " ******************************"
+echo -e " สถานะ $sts"
+echo -e "  1. ติดตั้ง​ Webmin"
+echo -e "  2. รีสตาร์ท​ Webmin"
+echo -e "  3. ถอนการติดตั้ง Webmin"
+echo -e " พิมพ์ CTRL+C เพื่อย้อนกลับ"
+read -rp " โปรดใส่คำสั่งให้ถูกต้อง : " -e num
 if [[ "$num" = "1" ]]; then
 install
 elif [[ "$num" = "2" ]]; then
@@ -74,6 +74,6 @@ elif [[ "$num" = "3" ]]; then
 uninstall
 else
 clear
-echo " You Entered The Wrong Number"
+echo " คำสั่งไม่ถูกต้อง"
 menu
 fi
