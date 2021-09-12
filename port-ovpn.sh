@@ -9,18 +9,18 @@ ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | c
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 echo -e "======================================"
 echo -e ""
-echo -e "     [1]  Change Port TCP $ovpn"
-echo -e "     [2]  Change Port UDP $ovpn2"
-echo -e "     [x]  Exit"
+echo -e "     [1]  เปลี่ยนพอร์ต TCP $ovpn"
+echo -e "     [2]  เปลี่ยนพอร์ต UDP $ovpn2"
+echo -e "     [x]  ออก"
 echo -e "======================================"
 echo -e ""
-read -p "     Select From Options [1-2 or x] :  " prot
+read -p "     เลือกจาก [1-2 หริอ x] :  " prot
 echo -e ""
 case $prot in
 1)
-read -p "New Port OpenVPN: " vpn
+read -p "พอร์ตใหม่: " vpn
 if [ -z $vpn ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $vpn)
@@ -75,13 +75,13 @@ sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2, SSL 442/   - Ope
 sed -i "s/$ovpn/$vpn/g" /etc/stunnel/stunnel.conf
 echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
 else
-echo "Port $vpn is used"
+echo "พอร์ต $vpn ถูกใช้งานแล้ว"
 fi
 ;;
 2)
-read -p "New Port OpenVPN: " vpn
+read -p "พอร์ใหม่: " vpn
 if [ -z $vpn ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $vpn)
@@ -136,7 +136,7 @@ systemctl enable --now openvpn-server@server-udp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2, SSL 442/   - OpenVPN                 : TCP $ovpn, UDP $vpn, SSL 442/g" /root/log-install.txt
 echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
 else
-echo "Port $vpn is used"
+echo "พอร์ต $vpn ถูกใช้งานแล้ว"
 fi
 ;;
 x)
@@ -144,7 +144,7 @@ exit
 menu
 ;;
 *)
-echo "Please enter an correct number"
+echo "โปรดเลือกคำสั่งให้ถูกต้อง"
 ;;
 esac
 
