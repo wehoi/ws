@@ -9,6 +9,8 @@ ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | c
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 echo -e "**************************************"
 echo -e ""
+echo -e "             สคริปโดยเอเจ"​
+echo -e ""
 echo -e "     [1]  เปลี่ยนพอร์ต TCP $ovpn"
 echo -e "     [2]  เปลี่ยนพอร์ต UDP $ovpn2"
 echo -e "     [x]  ออก"
