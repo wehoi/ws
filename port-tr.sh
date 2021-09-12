@@ -5,10 +5,10 @@ NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
 clear
 tr="$(cat ~/log-install.txt | grep -i Trojan | cut -d: -f2|sed 's/ //g')"
-echo -e "      Change Port $tr"
-read -p "New Port Trojan: " tr2
+echo -e "      เปลี่ยนพอร์ต $tr"
+read -p "พอร์ตใหม่: " tr2
 if [ -z $tr2 ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $tr2)
@@ -24,7 +24,7 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save > /dev/null
 netfilter-persistent reload > /dev/null
 systemctl restart trojan > /dev/null
-echo -e "\e[032;1mPort $tr2 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $tr2 แก้ไขสำเร็จแล้ว\e[0m"
 else
-echo "Port $tr2 is used"
+echo "พอร์ต​ $tr2 ถูกใช้งานแล้ว"
 fi
