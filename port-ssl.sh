@@ -6,20 +6,20 @@ MYIP=$(wget -qO- icanhazip.com);
 clear
 ssl="$(cat /etc/stunnel/stunnel.conf | grep -i accept | head -n 2 | cut -d= -f2 | sed 's/ //g' | tr '\n' ' ' | awk '{print $1}')"
 ssl2="$(cat /etc/stunnel/stunnel.conf | grep -i accept | head -n 2 | cut -d= -f2 | sed 's/ //g' | tr '\n' ' ' | awk '{print $2}')"
-echo -e "======================================"
+echo -e "**************************************"
 echo -e ""
-echo -e "     [1]  Change Port $ssl"
-echo -e "     [2]  Change Port $ssl2"
-echo -e "     [x]  Exit"
-echo -e "======================================"
+echo -e "     [1]  เปลี่ยนพอร์ต $ssl"
+echo -e "     [2]  เปลี่ยนพอร์ต $ssl2"
+echo -e "     [x]  ออก"
+echo -e "**************************************"
 echo -e ""
-read -p "     Select From Options [1-2 or x] :  " prot
+read -p "     เลือกจาก [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
 1)
-read -p "New Port Stunnel4: " stl
+read -p "พอร์ตใหม่: " stl
 if [ -z $stl ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องดาร"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $stl)
@@ -29,13 +29,13 @@ sed -i "s/   - Stunnel4                : $ssl, $ssl2/   - Stunnel4              
 /etc/init.d/stunnel4 restart > /dev/null
 echo -e "\e[032;1mPort $stl modified successfully\e[0m"
 else
-echo "Port $stl is used"
+echo "พอร์ต $stl ถูกใช้งานแล้ว"
 fi
 ;;
 2)
-read -p "New Port Stunnel4: " stl
+read -p "พอร์ตใหม่: " stl
 if [ -z $stl ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $stl)
@@ -45,7 +45,7 @@ sed -i "s/   - Stunnel4                : $ssl, $ssl2/   - Stunnel4              
 /etc/init.d/stunnel4 restart > /dev/null
 echo -e "\e[032;1mPort $stl modified successfully\e[0m"
 else
-echo "Port $stl is used"
+echo "พอร์ต $stl ถูกใช้งานแล้ว"
 fi
 ;;
 x)
@@ -53,6 +53,6 @@ exit
 menu
 ;;
 *)
-echo "Please enter an correct number"
+echo "โปรดเลือกคำสั่งให้ถูกต้อง"
 ;;
 esac
