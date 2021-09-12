@@ -35,7 +35,7 @@ history -c
 echo "1.2" > /home/ver
 clear
 echo " "
-echo " installation completed"
+echo " สำเร็จแล้ว"
 echo " "
 echo "=================================-พรีเมี่ยมสคริป-===========================" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
