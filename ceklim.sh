@@ -3,16 +3,9 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-if [ $MYIP = $IZIN ]; then
-echo -e "${green}Permission Accepted...${NC}"
-else
-echo -e "${red}Permission Denied!${NC}";
-echo "Only For Premium Users"
-exit 0
-fi
 clear
 echo " "
-echo "===========================================";
+echo "*******************************************";
 echo " ";
 if [ -e "/root/log-limit.txt" ]; then
 echo "User Who Violate The Maximum Limit";
@@ -27,5 +20,5 @@ echo " "
 echo " The user-limit script not been executed."
 fi
 echo " ";
-echo "===========================================";
+echo "*******************************************";
 echo " ";
