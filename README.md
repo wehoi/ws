@@ -32,4 +32,12 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.di
 Debian 9 & 10
 Ubuntu 18 & 20
 
-ขอขอบคุณทุกคนนะครับ
+ขอขอบคุณ
+โฮรัส
+เซย์
+เคนนี่
+อัยมาน
+และทุกๆคน
+
+มีปัญหา​แจ้งผมได้
+0934567688
