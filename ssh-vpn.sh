@@ -283,7 +283,6 @@ wget -O port-squid "https://github.com/wehoi/ws/raw/main/port-squid.sh"
 wget -O port-ws "https://github.com/wehoi/ws/raw/main/port-ws.sh"
 wget -O port-vless "https://github.com/wehoi/ws/raw/main/port-vless.sh"
 wget -O web "https://github.com/wehoi/ws/raw/main/webmin.sh"
-wget -O xp "https://github.com/wehoi/ws/raw/main/xp.sh"
 chmod +x menu
 chmod +x new
 chmod +x del
@@ -307,7 +306,6 @@ chmod +x port-squid
 chmod +x port-ws
 chmod +x port-vless
 chmod +x web
-chmod +x xp
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
