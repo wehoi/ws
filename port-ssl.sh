@@ -27,7 +27,7 @@ if [[ -z $cek ]]; then
 sed -i "s/$ssl/$stl/g" /etc/stunnel/stunnel.conf
 sed -i "s/   - Stunnel4                : $ssl, $ssl2/   - Stunnel4                : $stl, $ssl2/g" /root/log-install.txt
 /etc/init.d/stunnel4 restart > /dev/null
-echo -e "\e[032;1mPort $stl modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $stl แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $stl ถูกใช้งานแล้ว"
 fi
@@ -43,7 +43,7 @@ if [[ -z $cek ]]; then
 sed -i "s/$ssl2/$stl/g" /etc/stunnel/stunnel.conf
 sed -i "s/   - Stunnel4                : $ssl, $ssl2/   - Stunnel4                : $ssl, $stl/g" /root/log-install.txt
 /etc/init.d/stunnel4 restart > /dev/null
-echo -e "\e[032;1mPort $stl modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $stl แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $stl ถูกใช้งานแล้ว"
 fi
