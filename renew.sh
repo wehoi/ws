@@ -23,9 +23,10 @@ echo -e "****************************************"
 echo -e ""
 echo -e "    ชื่อ​            :  $User"
 echo -e "    จำนวนวันที่เพิ่ม    :  $Days วัน"
-echo -e "    วันหมดอายุ      :  $Expiration_Display"
+echo -e "    วันหมดอายุ      :  $Expiration_Display" 
 echo -e ""
 echo -e "****************************************"
+echo -e "สคริปโดยเอเจ" 
 else
 clear
 echo -e ""
