@@ -5,6 +5,7 @@ NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
 echo -n > /tmp/other.txt
 data=( `cat /etc/v2ray/vless.json | grep '^###' | cut -d ' ' -f 2`);
+echo -e "        สคริปโดยเอเจ"​
 echo "-------------------------------";
 echo "-----=[ Vless User Login ]=-----";
 echo "-------------------------------";
