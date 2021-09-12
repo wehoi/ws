@@ -35,7 +35,7 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save > /dev/null
 netfilter-persistent reload > /dev/null
 systemctl restart v2ray > /dev/null
-echo -e "\e[032;1mPort $tls1 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต​ $tls1 แก้ไข​สำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $tls1 ถูกใช้งานแล้ว"
 fi
@@ -60,7 +60,7 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save > /dev/null
 netfilter-persistent reload > /dev/null
 systemctl restart v2ray@none > /dev/null
-echo -e "\e[032;1mPort $none1 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $none1 แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $none1 ถูกใช้งานแล้ว"
 fi
