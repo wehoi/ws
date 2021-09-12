@@ -6,6 +6,7 @@ MYIP=$(wget -qO- icanhazip.com);
 clear
 echo -e ""
 echo -e "**************************************"
+echo -e "             สคริปโดยเอเจ"​
 echo -e ""
 echo -e "     [1]  เปลี่ยนพอร์ต Stunnel4"
 echo -e "     [2]  เปลี่ยนพอร์ต OpenVPN"
