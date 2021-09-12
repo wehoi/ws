@@ -8,18 +8,18 @@ tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
 echo -e "======================================"
 echo -e ""
-echo -e "     [1]  Change Port Vmess TLS $tls"
-echo -e "     [2]  Change Port Vmess None TLS $none"
-echo -e "     [x]  Exit"
+echo -e "     [1]  เปลี่ยนพอร์ต Vmess TLS $tls"
+echo -e "     [2]  เปลี่ยนพอร์ต Vmess None TLS $none"
+echo -e "     [x]  ออก"
 echo -e "======================================"
 echo -e ""
-read -p "     Select From Options [1-2 or x] :  " prot
+read -p "     เลือกจาก [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
 1)
-read -p "New Port Vmess TLS: " tls1
+read -p "พอร์ตใหม่: " tls1
 if [ -z $tls1 ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $tls1)
@@ -37,14 +37,14 @@ netfilter-persistent reload > /dev/null
 systemctl restart v2ray > /dev/null
 echo -e "\e[032;1mPort $tls1 modified successfully\e[0m"
 else
-echo "Port $tls1 is used"
+echo "พอร์ต $tls1 ถูกใช้งานแล้ว"
 fi
 ;;
 2)
-echo "Input Only 2 Character (eg : 69)"
-read -p "New Port Vmess None TLS: " none1
+echo "สองตัวเลขเท่านั้น (เช่น : 69)"
+read -p "พอร์ตใหม่: " none1
 if [ -z $none1 ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $none1)
@@ -62,7 +62,7 @@ netfilter-persistent reload > /dev/null
 systemctl restart v2ray@none > /dev/null
 echo -e "\e[032;1mPort $none1 modified successfully\e[0m"
 else
-echo "Port $none1 is used"
+echo "พอร์ต $none1 ถูกใช้งานแล้ว"
 fi
 ;;
 x)
@@ -70,6 +70,6 @@ exit
 menu
 ;;
 *)
-echo "Please enter an correct number"
+echo "โปรดเลือกคำสั่งให้ถูกต้อ"
 ;;
 esac
