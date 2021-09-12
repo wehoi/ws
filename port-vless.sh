@@ -6,20 +6,20 @@ MYIP=$(wget -qO- icanhazip.com);
 clear
 tls="$(cat ~/log-install.txt | grep -w "Vless TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vless None TLS" | cut -d: -f2|sed 's/ //g')"
-echo -e "======================================"
+echo -e "***************************************"
 echo -e ""
-echo -e "     [1]  Change Port Vless TLS $tls"
-echo -e "     [2]  Change Port Vless None TLS $none"
+echo -e "     [1]  เปลี่ยนพอร์ต Vless TLS $tls"
+echo -e "     [2]  เปลี่ยนพอร์ต Vless None TLS $none"
 echo -e "     [x]  Exit"
-echo -e "======================================"
+echo -e "***************************************"
 echo -e ""
-read -p "     Select From Options [1-2 or x] :  " prot
+read -p "     เลือกจาก [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
 1)
-read -p "New Port Vless TLS: " tls1
+read -p "พอร์ต​ใหม่: " tls1
 if [ -z $tls1 ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $tls1)
@@ -35,15 +35,15 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save > /dev/null
 netfilter-persistent reload > /dev/null
 systemctl restart v2ray@vless > /dev/null
-echo -e "\e[032;1mPort $tls1 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $tls1 แก้ไขสำเร็จแล้ว\e[0m"
 else
-echo "Port $tls1 is used"
+echo "พอร์ต $tls1 ถูกใช้งานแล้ว"
 fi
 ;;
 2)
-read -p "New Port Vless None TLS: " none1
+read -p "พอร์ตใหม่: " none1
 if [ -z $none1 ]; then
-echo "Please Input Port"
+echo "โปรดระบุพอร์ตที่ต้องการ"
 exit 0
 fi
 cek=$(netstat -nutlp | grep -w $none1)
@@ -59,9 +59,9 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save > /dev/null
 netfilter-persistent reload > /dev/null
 systemctl restart v2ray@vnone > /dev/null
-echo -e "\e[032;1mPort $none1 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $none1 แก้ไขสำเร็จแล้ว\e[0m"
 else
-echo "Port $none1 is used"
+echo "พอร์ต $none1 ถูกใช้งานแล้ว"
 fi
 ;;
 x)
@@ -69,6 +69,6 @@ exit
 menu
 ;;
 *)
-echo "Please enter an correct number"
+echo "โปรดเลือกคำสั่งให้ถูกต้อง"
 ;;
 esac
