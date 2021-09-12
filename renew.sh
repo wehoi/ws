@@ -4,10 +4,10 @@ green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
 clear
-read -p "         Username       :  " User
+read -p "         ชื่อ       :  " User
 egrep "^$User" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
-read -p "         Day Extend     :  " Days
+read -p "         จำนวนวันที่ต้องการเพิ่ม     :  " Days
 Today=`date +%s`
 Days_Detailed=$(( $Days * 86400 ))
 Expire_On=$(($Today + $Days_Detailed))
@@ -19,19 +19,19 @@ egrep "^$User" /etc/passwd >/dev/null
 echo -e "$Pass\n$Pass\n"|passwd $User &> /dev/null
 clear
 echo -e ""
-echo -e "========================================"
+echo -e "****************************************"
 echo -e ""
-echo -e "    Username        :  $User"
-echo -e "    Days Added      :  $Days Days"
-echo -e "    Expires on      :  $Expiration_Display"
+echo -e "    ชื่อ​            :  $User"
+echo -e "    จำนวนวันที่เพิ่ม    :  $Days วัน"
+echo -e "    วันหมดอายุ      :  $Expiration_Display"
 echo -e ""
-echo -e "========================================"
+echo -e "****************************************"
 else
 clear
 echo -e ""
-echo -e "======================================"
+echo -e "****************************************"
 echo -e ""
-echo -e "        Username Doesnt Exist        "
+echo -e "        ไม่มีบัญชีในระบบ        "
 echo -e ""
-echo -e "======================================"
+echo -e "****************************************"
 fi
