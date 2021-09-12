@@ -11,8 +11,8 @@ echo -e ""
 echo -e "     [1]  เปลี่ยนพอร์ต $sqd"
 echo -e "     [2]  เปลี่ยนพอร์ต $sqd2"
 echo -e "     [x]  ออก"
-echo -e ""
 echo -e "**************************************"
+echo -e ""
 read -p "     เลือกจาก [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
