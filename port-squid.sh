@@ -27,7 +27,7 @@ if [[ -z $cek ]]; then
 sed -i "s/$sqd/$squid/g" /etc/squid/squid.conf
 sed -i "s/$sqd/$squid/g" /root/log-install.txt
 /etc/init.d/squid restart > /dev/null
-echo -e "\e[032;1mPort $squid modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $squid แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $squid ถูกใช้งานแล้ว"
 fi
@@ -43,7 +43,7 @@ if [[ -z $cek ]]; then
 sed -i "s/$sqd2/$squid/g" /etc/squid/squid.conf
 sed -i "s/$sqd2/$squid/g" /root/log-install.txt
 /etc/init.d/squid restart > /dev/null
-echo -e "\e[032;1mPort $squid modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $squid แก้ไขสำเร็จแล้ว\e[0m"
 else
 echo "พอร์ต $squid ถูกใช้งานแล้ว"
 fi
