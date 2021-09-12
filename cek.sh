@@ -15,7 +15,7 @@ if [ -e "/var/log/secure" ]; then
 fi
                 
 data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
-echo -e "          สคริปโดยเอเจ"​
+echo "          สคริปโดยเอเจ"​;​
 echo "-----=[ Dropbear User Login ]=-----";
 echo "ID  |  Username  |  IP Address";
 echo "-------------------------------------";
