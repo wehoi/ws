@@ -13,7 +13,7 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.di
 ข้อมูลสคริป
 - OpenSSH                 : 22
 - OpenVPN                 : TCP 1194, UDP 2200, SSL 442
-- Stunnel4                : 555, 777
+- Stunnel4                : 444, 777
 - Dropbear                : 109, 143"  
 - Squid Proxy             : 3128, 8080 (limit to IP Server)
 - Badvpn                  : 7100, 7200, 7300
