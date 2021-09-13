@@ -8,12 +8,12 @@ echo " "
 echo "*******************************************";
 echo " ";
 if [ -e "/root/log-limit.txt" ]; then
-echo "User Who Violate The Maximum Limit";
+echo "ผู้ใช้งานที่ละเมิดกฎ";
 echo "Time - Username - Number of Multilogin"
 echo "-------------------------------------";
 cat /root/log-limit.txt
 else
-echo " No user has committed a violation"
+echo " ไม่มีผู้ใช้งานที่ละเมิดกฎ"
 echo " "
 echo " or"
 echo " "
