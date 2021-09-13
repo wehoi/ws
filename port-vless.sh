@@ -10,10 +10,10 @@ echo -e "***************************************"
 echo -e ""
 echo -e "     [1]  เปลี่ยนพอร์ต Vless TLS $tls"
 echo -e "     [2]  เปลี่ยนพอร์ต Vless None TLS $none"
-echo -e "     [x]  Exit"
+echo -e "     [x]  ออก"
 echo -e "***************************************"
 echo -e ""
-read -p "     เลือกจาก [1-2 หรือ x] :  " prot
+read -p "    โปรดเลือกออปชั่นที่ต้องการ [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
 1)
