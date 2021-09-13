@@ -2,7 +2,13 @@
 
 อย่าลืมเตรียมโดเมนก่อนนะครับ
 
-ก่อนอื่นใส่คำสั่งนี้ก่อน
+
+
+<h3 align="center">ก่อนอื่นใส่คำสั่งนี้ก่อน</h3>
+
+<p align="center">
+<pre align="center">apt update && apt upgrade -y && update-grub && sleep 2 && reboot
+</pre></p>
 
 apt update && apt upgrade -y && update-grub && sleep 2 && reboot
 
