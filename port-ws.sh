@@ -14,7 +14,7 @@ echo -e "     [2]  เปลี่ยนพอร์ต Vmess None TLS $none"
 echo -e "     [x]  ออก"
 echo -e "***************************************"
 echo -e ""
-read -p "     เลือกจาก [1-2 หรือ x] :  " prot
+read -p "    โปรดเลือกออปชั่นที่ต้องการ [1-2 หรือ x] :  " prot
 echo -e ""
 case $prot in
 1)
