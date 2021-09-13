@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# By jAvaNet
+# By เอเจ
 # ==================================================
 
 # initialisasi var
@@ -39,7 +39,7 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 1194
 cat > /etc/openvpn/TCP.ovpn <<-END
-setevn FRIENDLY_NAME "AJNET"
+FRIENDLY_NAME "AJNET"
 client
 dev tun
 proto tcp
@@ -69,7 +69,7 @@ sed -i $MYIP2 /etc/openvpn/TCP.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/UDP.ovpn <<-END
-setevn FRIENDLY_NAME "AJNET"
+FRIENDLY_NAME "AJNET"
 client
 dev tun
 proto udp
@@ -88,7 +88,7 @@ sed -i $MYIP2 /etc/openvpn/UDP.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/SSL.ovpn <<-END
-setevn FRIENDLY_NAME "AJNET"
+FRIENDLY_NAME "AJNET"
 client
 dev tun
 proto tcp
