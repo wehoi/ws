@@ -31,8 +31,6 @@ sed -i '/#tls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"2"',"email": "'""$user""'"' /etc/v2ray/config.json
 sed -i '/#none$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"2"',"email": "'""$user""'"' /etc/v2ray/none.json
-sed -i '/#http$/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","alterId": '"2"',"email": "'""$user""'"' /etc/v2ray/http.json
 cat>/etc/v2ray/$user-tls.json<<EOF
       {
       "v": "2",
@@ -63,29 +61,11 @@ cat>/etc/v2ray/$user-none.json<<EOF
       "tls": "none"
 }
 EOF
-cat>/etc/v2ray/$user-http.json<<EOF
-      {
-      "v": "2",
-      "ps": "${user}",
-      "add": "${domain}",
-      "port": "${http}",
-      "id": "${uuid}",
-      "aid": "2",
-      "net": "tcp",
-      "path": "/v2ray",
-      "type": "http",
-      "version": "1.1",
-      "method": "GET"
-      "host": "",
-      "tls": "none"
-}
-EOF
+
 vmess_base641=$( base64 -w 0 <<< $vmess_json1)
 vmess_base642=$( base64 -w 0 <<< $vmess_json2)
-vmess_base643=$( base64 -w 0 <<< $vmess_json3) 
 vmesslink1="vmess://$(base64 -w 0 /etc/v2ray/$user-tls.json)"
 vmesslink2="vmess://$(base64 -w 0 /etc/v2ray/$user-none.json)"
-vmesslink3="vmess://$(base64 -w 0 /etc/v2ray/$user-http.json)"
 systemctl restart v2ray
 systemctl restart v2ray@none
 service cron restart
@@ -109,7 +89,5 @@ echo -e "*********************************"
 echo -e "TLS ลิงค์​      : ${vmesslink1}"
 echo -e "*********************************"
 echo -e "HTTP ลิงก์​     : ${vmesslink2}"
-echo -e "*********************************"
-echo -e "TCP ลิงก์​      : ${vmesslink3}"
 echo -e "*********************************"
 echo -e "สคริปโดยเอเจ" 
