@@ -11,9 +11,9 @@ read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/premium-script/ipvps.conf
 echo "$host" >> /etc/v2ray/domain
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://github.com/wehoi/ws/raw/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
+wget https://github.com/wehoi/ws/raw/main/coba.sh && chmod +x coba.sh && screen -S v2ray ./coba.sh
 rm -f /root/ssh-vpn.sh
-rm -f /root/ins-vt.sh
+rm -f /root/coba.sh
 history -c
 echo "1.2" > /home/ver
 clear
