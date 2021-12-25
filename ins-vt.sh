@@ -3,18 +3,16 @@ domain=$(cat /root/v2ray/domain)
 apt install iptables iptables-persistent -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
 apt install socat cron bash-completion ntpdate -y
+apt install lolcat -y
 ntpdate pool.ntp.org
 apt -y install chrony
 timedatectl set-ntp true
 systemctl enable chronyd && systemctl restart chronyd
 systemctl enable chrony && systemctl restart chrony
-timedatectl set-timezone Asia/Bangkok
+timedatectl set-timezone Asia/Jakarta
 chronyc sourcestats -v
 chronyc tracking -v
 date
-
-mkdir -p /etc/trojan/
-touch /etc/trojan/akun.conf
 # install v2ray
 wget https://github.com/wehoi/ws/raw/main/go.sh && chmod +x go.sh && ./go.sh
 rm -f /root/go.sh
@@ -22,9 +20,7 @@ mkdir /root/.acme.sh
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/v2ray/v2ray.crt
- --keypath /etc/v2ray/v2ray.key --ecc
-service squid start
+~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
 uuid=$(cat /proc/sys/kernel/random/uuid)
 cat> /etc/v2ray/config.json << END
 {
@@ -220,7 +216,7 @@ cat> /etc/v2ray/vless.json << END
   },
   "inbounds": [
     {
-      "port": 2083,
+      "port": 8442,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -485,16 +481,16 @@ cat> /etc/v2ray/trojan.json <<END
   }
 }
 END
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 4443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 5443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 6443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 4443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 5443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 6443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
@@ -503,7 +499,7 @@ systemctl daemon-reload
 systemctl enable v2ray@none.service
 systemctl start v2ray@none.service
 systemctl enable v2ray@vless.service
-systemctl start v2ray@vlessservice
+systemctl start v2ray@vless.service
 systemctl enable v2ray@vnone.service
 systemctl start v2ray@vnone.service
 systemctl enable v2ray@trojan.service
@@ -537,7 +533,3 @@ chmod +x vrr
 chmod +x vsr
 chmod +x tjr
 chmod +x cert
-cd
-rm -f ins-vt.sh
-mv /root/domain /etc/v2ray
-
