@@ -4,17 +4,17 @@ domain=$(cat /etc/v2ray/domain)
 else
 domain=$IP
 fi
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do                read -rp "User: " -e user
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do                read -rp "ชื่อ: " -e user
                 CLIENT_EXISTS=$(grep -w $user /etc/v2ray/trojan.json | wc -l)
 
                 if [[ ${CLIENT_EXISTS} == '1' ]]; then
                         echo ""
-                        echo "A client with the specified name was already created, please choose another name."
+                        echo " มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
                         exit 1
                 fi
         done
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "Expired (days): " masaaktif
+read -p "วันหมดอายุ (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
 },{"password": "'""$user""'","email": "'""$user""'"' /etc/v2ray/trojan.json
@@ -22,12 +22,13 @@ systemctl restart v2ray@trojan
 trojanlink="trojan://${user}@${domain}:443"
 clear
 echo -e ""
-echo -e "___________vpn trojan___________"
-echo -e "Remarks        : ${user}"
-echo -e "Host/IP        : ${domain}"
-echo -e "port           : 443"
-echo -e "Key            : ${user}"
-echo -e "link           : ${trojanlink}"
-echo -e "________________________________"
-echo -e "Expired On     : $exp"
-echo -e "By java"
+echo -e "********************************" 
+echo -e "           ข้อมูลบัญชี"   
+echo -e "ชื่อ          : ${user}"
+echo -e "โฮสต์เ        : ${domain}"
+echo -e "พอร์ต        : 443"
+echo -e "คีย์          : ${user}"
+echo -e "วันหมดอายุ    : $exp"
+echo -e "ลิงก์         : ${trojanlink}"
+echo -e "*********************************"
+echo -e "By AJ"
