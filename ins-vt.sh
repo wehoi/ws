@@ -59,7 +59,7 @@ cat> /etc/v2ray/config.json << END
           ]
         },
         "wsSettings": {
-          "path": "/v2ray",
+          "path": "/aj",
           "headers": {
             "Host": ""
           }
@@ -147,7 +147,7 @@ cat> /etc/v2ray/none.json << END
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/v2ray",
+          "path": "/aj",
           "headers": {
             "Host": ""
           }
@@ -244,7 +244,7 @@ cat> /etc/v2ray/vless.json << END
           ]
         },
         "wsSettings": {
-          "path": "/v2ray",
+          "path": "/aj",
           "headers": {
             "Host": ""
           }
@@ -331,7 +331,7 @@ cat> /etc/v2ray/vnone.json << END
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/v2ray",
+          "path": "/aj",
           "headers": {
             "Host": ""
           }
@@ -396,76 +396,96 @@ cat> /etc/v2ray/vnone.json << END
   }
 }
 END
-cat <<EOF > /etc/trojan/config.json
+cat> /etc/v2ray/trojan.json <<END
 {
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 2087,
-    "remote_addr": "127.0.0.1",
-    "remote_port": 2603,
-    "password": [
-        "$uuid"
-    ],
-    "log_level": 1,
-    "ssl": {
-        "cert": "/etc/v2ray/v2ray.crt",
-        "key": "/etc/v2ray/v2ray.key",
-        "key_password": "",
-        "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384",
-        "cipher_tls13": "TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
-        "prefer_server_cipher": true,
-        "alpn": [
-            "http/1.1"
+  "log": {
+    "access": "/var/log/v2ray/trojan.log",
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "${uuid}"
+#tls
+          }
         ],
-        "reuse_session": true,
-        "session_ticket": false,
-        "session_timeout": 600,
-        "plain_http_response": "",
-        "curves": "",
-        "dhparam": ""
-    },
-    "tcp": {
-        "prefer_ipv4": false,
-        "no_delay": true,
-        "keep_alive": true,
-        "reuse_port": false,
-        "fast_open": false,
-        "fast_open_qlen": 20
-    },
-    "mysql": {
-        "enabled": false,
-        "server_addr": "127.0.0.1",
-        "server_port": 3306,
-        "database": "trojan",
-        "username": "trojan",
-        "password": "",
-        "key": "",
-        "cert": "",
-        "ca": ""
+        "fallbacks": [
+          {
+            "dest": 80
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "etc/v2ray/v2ray.crt",
+              "keyFile": "/etc/v2ray/v2ray.key"
+            }
+          ],
+          "alpn": [
+            "http/1.1"
+          ]
+        },
+        "sockopt": {
+          "mark": 0,
+          "tcpFastOpen": true
+        }
+      },
+      "domain": "$domain"
     }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  }
 }
-EOF
-cat <<EOF> /etc/systemd/system/trojan.service
-[Unit]
-Description=Trojan
-Documentation=https://trojan-gfw.github.io/trojan/
-
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/trojan -c /etc/trojan/config.json -l /var/log/trojan.log
-Type=simple
-KillMode=process
-Restart=no
-RestartSec=42s
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-cat <<EOF > /etc/trojan/uuid.txt
-$uuid
-EOF
+END
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
@@ -487,8 +507,8 @@ systemctl enable v2ray@vless.service
 systemctl start v2ray@vlessservice
 systemctl enable v2ray@vnone.service
 systemctl start v2ray@vnone.service
-systemctl restart trojan
-systemctl enable trojan
+systemctl enable v2ray@trojan.service
+systemctl start v2ray@trojan.service
 systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
