@@ -40,7 +40,7 @@ cat>/etc/v2ray/$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "2",
       "net": "ws",
-      "path": "/v2ray",
+      "path": "/aj",
       "type": "none",
       "host": "",
       "tls": "tls"
