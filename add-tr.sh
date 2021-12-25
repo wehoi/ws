@@ -5,7 +5,6 @@ NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
 echo "กำลังดำเนินการ"
 clear
-uuid=$(cat /etc/trojan/uuid.txt)
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/v2ray/domain)
@@ -23,12 +22,13 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
+uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "จำนวนวันใช้งาน: " masaaktif
 sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan/akun.conf
 systemctl restart trojan
-trojanlink="trojan://${user}@${domain}:${tr}"
+trojanlink="trojan://${uuid}@${domain}:443"
 clear
 echo -e ""
 echo -e "*********************************"
@@ -37,7 +37,7 @@ echo -e ""
 echo -e "ชื่อ​           : ${user}"
 echo -e "โฮสต์​         : ${domain}"
 echo -e "พอร์ต         : ${tr}"
-echo -e "คีย์​           : ${user}"
+echo -e "คีย์​           : ${uuid}"
 echo -e "วันหมดอายุ​     : $exp"
 echo -e "ลิงค์​          : ${trojanlink}"
 echo -e "*********************************"
