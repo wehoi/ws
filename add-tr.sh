@@ -11,24 +11,23 @@ domain=$(cat /etc/v2ray/domain)
 else
 domain=$IP
 fi
-tr="$(cat ~/log-install.txt | grep -i Trojan | cut -d: -f2|sed 's/ //g')"
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "รหัสผ่าน: " -e user
-		user_EXISTS=$(grep -w $user /etc/trojan/akun.conf | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+		read -rp "ชื่อ: " -e user
+		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/trojan.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
+		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
-			echo "มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
+			echo "A client with the specified name was already created, please choose another name."
 			exit 1
 		fi
 	done
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "จำนวนวันใช้งาน: " masaaktif
-sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan/config.json
+read -p "จำนวนวันใช้งาน (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-echo -e "### $user $exp" >> /etc/trojan/akun.conf
-systemctl restart trojan
-trojanlink="trojan://${uuid}@${domain}:443"
+sed -i '/#tls$/a\### '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/v2ray/trojan.json
+systemctl restart v2ray@trojan
+trojanlink="trojan://${user}@${domain}:443"
 clear
 echo -e ""
 echo -e "*********************************"
