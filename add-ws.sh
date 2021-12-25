@@ -55,7 +55,7 @@ cat>/etc/v2ray/$user-none.json<<EOF
       "id": "${uuid}",
       "aid": "2",
       "net": "ws",
-      "path": "/v2ray",
+      "path": "/aj",
       "type": "none",
       "host": "",
       "tls": "none"
@@ -78,12 +78,11 @@ echo -e "ชื่อ           : ${user}"
 echo -e "โดเมน         : ${domain}"
 echo -e "TLS พอร์ต     : ${tls}"
 echo -e "HTTP พอร์ต​    : ${none}"
-echo -e "TCP พอร์ต​     : ${http}" 
 echo -e "ไอดี          : ${uuid}"
 echo -e "alterId      : 2"
 echo -e "ความปลอดภัย   : auto"
 echo -e "network      : ws"
-echo -e "เส้นทาง        : /v2ray"
+echo -e "เส้นทาง        : /aj"
 echo -e "วันหมดอายุ     : $exp"
 echo -e "*********************************"
 echo -e "TLS ลิงค์​      : ${vmesslink1}"
