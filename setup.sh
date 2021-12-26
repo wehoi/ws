@@ -40,24 +40,24 @@ NC='\e[0m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 echo -e "${green} คุณได้รับอนุญาตให้ใช้งานได้...${NC}"
-sleep 1p
+sleep 1
 clear
 echo '============================================='
 echo '                โปรดรอสักครู่... '
 echo '       ระบบจะทำการอัพเดทและอัพเกรดเซิฟเวอร์'
 echo '============================================='
-sleep 1
+sleep 5
 apt update && apt upgrade -y
 clear
 echo '============================================='
 echo '                 เรียบร้อยแล้ว '
 echo '============================================='
-sleep 1
+sleep 5
 clear
 echo '============================================='
 echo '         ระบบกำลังจะดำเนินการลงสคริปให้กับท่าน '
 echo '============================================='
-sleep 1
+sleep 5
 mkdir /etc/v2ray
 mkdir /var/lib/premium-script;
 mkdir /var/lib/crot-script;
@@ -73,10 +73,12 @@ clear
 echo '============================================='
 echo '        กำลังติดตั้ง SSH & OPENVPN '
 echo '============================================='
+sleep 3
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 echo '============================================='
 echo '        กำลังติดตั้ง V2RAY '
 echo '============================================='
+sleep 3
 wget https://github.com/wehoi/ws/raw/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/ins-vt.sh
@@ -84,12 +86,10 @@ history -c
 echo "1.2" > /home/ver
 clear
 echo " ติดตั้งสำเร็จแล้ว"
-echo "echo '           AJ FREE SCRIPT             '" >> .profile
-echo "echo '           t.me/yallaaj             '" >> .profile
 echo " "
-echo "=================================-ฟรีสคริป-===========================" | tee -a log-install.txt
+echo "============================-ฟรีสคริป-=========================" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
-echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
+echo "-------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
