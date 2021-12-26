@@ -40,32 +40,24 @@ NC='\e[0m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 echo -e "${green} คุณได้รับอนุญาตให้ใช้งานได้...${NC}"
-sleep 5
+sleep 1p
 clear
-echo ""
-echo '                          สวัสดีครับ                           '
-echo '         หากสนใจจะใช้งานสคริปนี้ โปรดติดต่อเจ้าของสคริปนะครับ          '
-echo '                                                            '
-echo '                  Telegram t.me/yallaaj                     '
-echo '                        0934567688                          '
-sleep 5
-fi
 echo '============================================='
 echo '                โปรดรอสักครู่... '
 echo '       ระบบจะทำการอัพเดทและอัพเกรดเซิฟเวอร์'
 echo '============================================='
-sleep 2
+sleep 1
 apt update && apt upgrade -y
 clear
 echo '============================================='
 echo '                 เรียบร้อยแล้ว '
 echo '============================================='
-sleep 2
+sleep 1
 clear
 echo '============================================='
 echo '         ระบบกำลังจะดำเนินการลงสคริปให้กับท่าน '
 echo '============================================='
-sleep 2
+sleep 1
 mkdir /etc/v2ray
 mkdir /var/lib/premium-script;
 mkdir /var/lib/crot-script;
