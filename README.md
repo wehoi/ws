@@ -27,8 +27,8 @@
 - V2RAY Vmess TLS         : 8443
 - V2RAY Vmess None TLS    : 80
 - V2RAY Vless TLS         : 2083
-- V2RAY Vless None TLS    : 8880
-- Trojan                  : 2443
+- V2RAY Vless None TLS    : 8442
+- Trojan                  : 443
 - Owner                   : เอเจ
 - LINE                    : aj07
 
@@ -46,4 +46,3 @@ Ubuntu 18 & 20
 และทุกๆคน
 
 มีปัญหา​แจ้งผมได้
-0934567688
