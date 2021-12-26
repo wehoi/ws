@@ -47,8 +47,6 @@ echo "   - Auto-Reboot             : [ON]"  | tee -a log-install.txt
 echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
 echo "   - ออโต้รีบูตเวลา 05.00 GMT +7" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
-echo "   - เจ้าของ                   : เอเจ" | tee -a log-install.txt
-echo "   - เบอร์โทร                  : 0934567688"  | tee -a log-install.txt
 echo ""
 echo "--------------------------สคริปโดยเอเจ ------------------------" | tee -a log-install.txt
 echo ""
