@@ -85,14 +85,17 @@ rm -f /root/ins-vt.sh
 history -c
 echo "1.2" > /home/ver
 clear
-echo '                  ยินดีต้อนรับ    ' " >> .profile
-echo '               AJ MINI SCRIPT             '" >> .profile
-echo '          ติดต่อ​ เจ้าของสคริป​ t.me/yallaaj             '" >> .profile
-echo " ติดตั้งสำเร็จแล้ว"
+echo " echo '                 ยินดีต้อนรับ    ' " >> .profile
+echo " echo '              AJ MINI SCRIPT             '" >> .profile
+echo " echo '          ติดต่อ​ เจ้าของสคริป​ t.me/yallaaj            '" >> .profile
+echo '============================================='
+echo "                ติดตั้งสำเร็จแล้ว"
+echo '============================================='
+clear
 echo " "
-echo "============================-ฟรีสคริป-=========================" | tee -a log-install.txt
+echo "===========================-ฟรีสคริป-=========================" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
-echo "-------------------------------------------------------------" | tee -a log-install.txt
+echo "------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
@@ -118,7 +121,7 @@ echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
 echo "   - ออโต้รีบูตเวลา 05.00 GMT +7" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""
-echo "--------------------------สคริปโดยเอเจ ------------------------" | tee -a log-install.txt
+echo "--------------------------สคริปโดยเอเจ------------------------" | tee -a log-install.txt
 echo ""
 echo " อย่าลืมรีบูตด้วยเด้อ " 
 sleep 10
