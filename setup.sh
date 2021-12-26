@@ -85,8 +85,9 @@ rm -f /root/ins-vt.sh
 history -c
 echo "1.2" > /home/ver
 clear
-echo "echo '           AJ PREM SCRIPT             '" >> .profile
-echo "echo '           t.me/yallaaj             '" >> .profile
+echo '                  ยินดีต้อนรับ    ' " >> .profile
+echo '               AJ MINI SCRIPT             '" >> .profile
+echo '          ติดต่อ​ เจ้าของสคริป​ t.me/yallaaj             '" >> .profile
 echo " ติดตั้งสำเร็จแล้ว"
 echo " "
 echo "============================-ฟรีสคริป-=========================" | tee -a log-install.txt
