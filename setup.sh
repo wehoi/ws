@@ -41,7 +41,6 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 echo -e "${green} คุณได้รับอนุญาตให้ใช้งานได้...${NC}"
 sleep 5
-else
 clear
 echo ""
 rm -f setup.sh
