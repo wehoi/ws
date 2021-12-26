@@ -2,15 +2,7 @@
 
 อย่าลืมเตรียมโดเมนก่อนนะครับ
 
-
-
-<h3 align="center">ก่อนอื่นใส่คำสั่งนี้ก่อน</h3>
-
-<p align="center">
-<pre align="center">apt update && apt upgrade -y && update-grub && sleep 2 && reboot
-</pre></p>
-
-<h3 align="center">หลังเครื่องรีบูตแล้วใส่คำสั่งนี้ต่อ 
+<h3 align="center">รันคำสั่งด้านล่าง​นี้ 
 </h3>
 <p align="center">
 <pre align="center">sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://github.com/wehoi/ws/raw/main/setup.sh && chmod +x setup.sh && screen -S setup.sh ./setup.sh
