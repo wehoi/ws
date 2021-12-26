@@ -1,26 +1,104 @@
 #!/bin/bash
-if [ -f "/etc/v2ray/domain" ]; then
-echo " the script already installed"
+echo ''
+clear
+echo ''
+echo ' .......................................................... ' 
+echo '     ____   ____  __ __   ____  ____     ___  ______        ' 
+echo '    |    | /    T|  T  | /    T|    \   /  _]|      T       '  
+echo '    l__  |Y  o  ||  |  |Y  o  ||  _  Y /  [_ |      |       ' 
+echo '    __j  ||     ||  |  ||     ||  |  |Y    _]l_j  l_j       '
+echo '   /  |  ||  _  |l  :  !|  _  ||  |  ||   [_   |  |         '
+echo '   \  `  ||  |  | \   / |  |  ||  |  ||     T  |  |         '
+echo '    \____jl__j__j  \_/  l__j__jl__j__jl_____j  l__j         '
+echo '                      Copyright ©AJ           '                              
+echo ''                                                         
+echo '                    ⚡ FREE สคริป ⚡     '
+echo ' .......................................................... '
+echo '              Auto Installation Script By AJ                '
+echo '                     MiniScript 2021                        '
+echo '                     Contact Owner                          '  
+echo '                Telegram : @yallaaj                         '
+echo '                Email : syedjawwad@javanet.tech             ' 
+echo '                Tel   : +66934567688                        '    
+echo '...........................................................'
+echo ''
+echo '                     โปรดรอสักครู่..... !                      '
+echo ' .......................................................... '
+sleep 5
+clear
+if [ "${EUID}" -ne 0 ]; then
+		echo "You need to run this script as root"
+		exit 1
+fi
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+		echo "OpenVZ is not supported"
+		exit 1
+fi
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+MYIP=$(wget -qO- ipinfo.io/ip);
+clear
+echo -e "${green} คุณได้รับอนุญาตให้ใช้งานได้...${NC}"
+sleep 5
+else
+clear
+echo ""
+rm -f setup.sh
+echo '                          สวัสดีครับ                           '
+echo '         หากสนใจจะใช้งานสคริปนี้ โปรดติดต่อเจ้าของสคริปนะครับ          '
+echo '                                                            '
+echo '                  Telegram t.me/yallaaj                     '
+echo '                        0934567688                          '
+sleep 20
 exit 0
 fi
+echo '============================================='
+echo '                โปรดรอสักครู่... '
+echo '       ระบบจะทำการอัพเดทและอัพเกรดเซิฟเวอร์'
+echo '============================================='
+sleep 2
+apt update && apt upgrade -y
+clear
+echo '============================================='
+echo '                 เรียบร้อยแล้ว '
+echo '============================================='
+sleep 2
+clear
+echo '============================================='
+echo '         ระบบกำลังจะดำเนินการลงสคริปให้กับท่าน '
+echo '============================================='
+sleep 2
 mkdir /etc/v2ray
 mkdir /var/lib/premium-script;
+mkdir /var/lib/crot-script;
 clear
-echo "กรุณาใส่โดเมน"
-read -p "Hostname / Domain: " host
+echo '============================================='
+echo "      โปรดใส่โดเมนของท่าน, หากไม่มีกด ENTER "
+echo '============================================='
+read -p "โฮสต์ / โดเมน​ : " host
 echo "IP=$host" >> /var/lib/premium-script/ipvps.conf
+echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
 echo "$host" >> /etc/v2ray/domain
+clear
+echo '============================================='
+echo '        กำลังติดตั้ง SSH & OPENVPN '
+echo '============================================='
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+echo '============================================='
+echo '        กำลังติดตั้ง V2RAY '
+echo '============================================='
 wget https://github.com/wehoi/ws/raw/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/ins-vt.sh
 history -c
 echo "1.2" > /home/ver
 clear
-echo " "
 echo " ติดตั้งสำเร็จแล้ว"
+echo "echo '           AJ FREE SCRIPT             '" >> .profile
+echo "echo '           t.me/yallaaj             '" >> .profile
 echo " "
-echo "=================================-พรีเมี่ยมสคริป-===========================" | tee -a log-install.txt
+echo "=================================-ฟรีสคริป-===========================" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
 echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
