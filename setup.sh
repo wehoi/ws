@@ -76,12 +76,18 @@ echo '============================================='
 sleep 3
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 echo '============================================='
-echo '        กำลังติดตั้ง V2RAY '
+echo '        กำลังติดตั้ง V2RAY CORE'
 echo '============================================='
 sleep 3
 wget https://github.com/wehoi/ws/raw/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
+echo '============================================='
+echo '        กำลังติดตั้ง XRAY CORE'
+echo '============================================='
+sleep 3
+wget https://github.com/wehoi/ws/raw/main/xray.sh && chmod +x xray.sh && screen -S v2ray ./xray.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/ins-vt.sh
+rm -f /root/xray.sh
 history -c
 echo "1.2" > /home/ver
 clear
