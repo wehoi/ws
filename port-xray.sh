@@ -1,7 +1,7 @@
 #!/bin/bash
 direct="$(cat ~/log-install.txt | grep -w "XRAY DIRECT" | cut -d: -f2|sed 's/ //g')"
-echo -e "      Change Port $direct"
-read -p "New Port XRAY DIRECT and XRAY SPLICE: " direct1
+echo -e "พอร์ต​ใหม่ $direct"
+read -p "โปรดระบุพอร์ตที่ต้องการ: " direct1
 if [ -z $direct1 ]; then
 echo "Please Input Port"
 exit 0
@@ -20,7 +20,7 @@ systemctl enable xray-mini@vless-splice > /dev/null
 systemctl start xray-mini@vless-splice > /dev/null
 
 
-echo -e "\e[032;1mPort $direct1 modified successfully\e[0m"
+echo -e "\e[032;1mพอร์ต $direct1 แก้ไขสำเร็จแล้ว\e[0m"
 else
-echo "Port $direct1 is used"
+echo "พอร์ต $direct1 ถูกใช้งานแล้ว"
 fi
