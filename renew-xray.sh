@@ -3,15 +3,15 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray-mini/vless-direct.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
 		echo ""
-		echo "You have no existing clients!"
+		echo "ไม่มีบัญชีในระบบ!"
 		exit 1
 	fi
 
 	clear
 	echo ""
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
+	echo "เลือกบัญชีที่ต้องการต่ออายุ"
+	echo " กด CTRL+C เพื่อย้อนกลับ"
+	echo -e "***********************"
 	grep -E "^### " "/etc/xray-mini/vless-direct.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
@@ -34,8 +34,9 @@ sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray-mini/vless-splice.json
 service cron restart
 clear
 echo ""
-echo " ✅DONE RENEW ACCOUNT, TERIMA KASIH YA"
-echo " =========================="
-echo " Client Name : $user"
-echo " Expired On  : $exp4"
-echo " =========================="
+echo " ต่ออายุสำเร็จแล้ว"
+echo " **************************"
+echo " ชื่อ​          : $user"
+echo " วันหมดอายุใหม่  : $exp4"
+echo " **************************"
+echo " สคริปโดยเอเจ" 
