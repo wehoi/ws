@@ -37,7 +37,7 @@ systemctl restart v2ray@vnone
 clear
 echo -e ""
 echo -e "*********************************"
-echo -e "         ขู้อมูลบัญชี"
+echo -e "         ข้อมูลบัญชี"
 echo -e ""
 echo -e "ชื่อ​             : ${user}"
 echo -e "โดเมน​           : ${domain}"
