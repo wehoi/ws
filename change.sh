@@ -14,6 +14,7 @@ echo -e "     [3]  เปลี่ยนพอร์ต Vmess"
 echo -e "     [4]  เปลี่ยนพอร์ต Vless"
 echo -e "     [5]  เปลี่ยนพอร์ต Trojan"
 echo -e "     [6]  เปลี่ยนพอร์ต Squid"
+echo -e "     [7]  เปลี่ยนพอร์ต Xray"
 echo -e "     [x]  ออก"
 echo -e "**************************************"
 echo -e ""
@@ -37,6 +38,9 @@ port-tr
 ;;
 6)
 port-squid
+;;
+7)
+port-xray
 ;;
 x)
 clear
