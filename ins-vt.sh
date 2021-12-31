@@ -400,7 +400,7 @@ cat> /etc/v2ray/trojan.json <<END
   },
   "inbounds": [
     {
-      "port": 443,
+      "port": 2443,
       "protocol": "trojan",
       "settings": {
         "clients": [
@@ -484,12 +484,14 @@ END
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 4443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 5443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 6443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 4443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 5443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 6443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
@@ -520,6 +522,10 @@ wget -O vrr "https://github.com/wehoi/ws/raw/main/renew-ws.sh"
 wget -O vsr "https://github.com/wehoi/ws/raw/main/renew-vless.sh"
 wget -O tjr "https://github.com/wehoi/ws/raw/main/renew-tr.sh"
 wget -O cert "https://github.com/wehoi/ws/raw/main/cert.sh"
+wget -O xr "https://github.com/wehoi/ws/raw/main/add-xray.sh"
+wget -O xrd "https://github.com/wehoi/ws/raw/main/del-xray.sh"
+wget -O xrr "https://github.com/wehoi/ws/raw/main/renew-xray.sh"
+wget -O port-xray "https://github.com/wehoi/ws/raw/main/port-xray.sh"
 chmod +x vr
 chmod +x vs
 chmod +x tj
@@ -533,3 +539,7 @@ chmod +x vrr
 chmod +x vsr
 chmod +x tjr
 chmod +x cert
+chmod +x xr
+chmod +x xrd
+chmod +x xrr
+chmod +x port-xray
