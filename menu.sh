@@ -44,19 +44,25 @@ echo -e "* vr           : สร้างบัญชี VMESS"
 echo -e "* vrd          : ลบบัญชี VMESS"
 echo -e "* vrc          : ตรวจสอบผู้ใช้งานบัญชี VMESS"             
 echo -e "* vrr          : ต่ออายุบัญชี VMESS"                     
-echo -e "************************************************************" | lolcat
-echo -e "                     TROJAN"
-echo -e "* tj           : สร้างบัญชี TROJAN"
-echo -e "* tjd          : ลบบัญชี TROJAN"
-echo -e "* tjc          : ตรวจสอบผู้ใช้งานบัญชี TROJAN"             
-echo -e "* trr          : ต่ออายุบัญชี TROJAN"
-echo -e "************************************************************" | lolcat
+echo -e "************************************************************" | lolcat                  
 echo -e "                     VLESS"
 echo -e "* vs           : สร้างบัญชี VLESS"
 echo -e "* vsd          : ลบบัญชี VLESS"
 echo -e "* vsc          : ตรวจสอบผู้ใช้งานบัญชี VLESS"             
 echo -e "* vsr          : ต่ออายุบัญชี VLESS"
 echo -e "************************************************************"  | lolcat
+echo -e "                     TROJAN"
+echo -e "* tj           : สร้างบัญชี TROJAN"
+echo -e "* tjd          : ลบบัญชี TROJAN"
+echo -e "* tjc          : ตรวจสอบผู้ใช้งานบัญชี TROJAN"             
+echo -e "* trr          : ต่ออายุบัญชี TROJAN"
+echo -e "************************************************************" | lolcat
+echo -e "                     XRAY"
+echo -e "* xr           : สร้างบัญชี XRAY"
+echo -e "* xrd          : ลบบัญชี XRAY"
+echo -e "* xrc          : ตรวจสอบผู้ใช้งานบัญชี XRAY"             
+echo -e "* xrr          : ต่ออายุบัญชี XRAY"
+echo -e "************************************************************" | lolcat     
 echo -e "                    ตั้งค่าระบบ"
 echo -e "* cert         : ต่ออายุ Certificate ของบัญชี V2ray" 
 echo -e "* port         : แก้ไขหรือเปลี่ยนพอร์ต"
