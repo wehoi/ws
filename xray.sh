@@ -18,7 +18,7 @@ apt install python3 -y
 mkdir -p /usr/local/dark-xray/
 
 # // Installation XRay Core
-wget -q -O /usr/local/dark-xray/xray-mini "https://raw.githubusercontent.com/mdrms/me/main/xray-mini" 
+wget -q -O /usr/local/dark-xray/xray-mini "https://raw.githubusercontent.com/wehoi/ws/main/xray-mini" 
 chmod +x /usr/local/dark-xray/xray-mini
 
 # // Make XRay Mini Root Folder
