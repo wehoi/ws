@@ -11,18 +11,18 @@ vless1="$( cat /etc/xray-mini/vless-direct.json | grep -w port | awk '{print $2}
 vless2="$( cat /etc/xray-mini/vless-splice.json | grep -w port | awk '{print $2}' | sed 's/,//g' )"
 
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
+		read -rp "ชื่อ: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/xray-mini/vless-direct.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
-			echo "A client with the specified name was already created, please choose another name."
+			echo "มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
 			exit 1
 		fi
 	done
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "Expired (days): " masaaktif
+read -p "จำนวนวันใช้งาน: " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 
 # // Input To Server
@@ -48,18 +48,19 @@ systemctl restart xray-mini@vless-splice
 
 clear
 echo -e ""
-echo -e "==========-XRAYS/VLESS-=========="
-echo -e "Remarks        : ${user}"
-echo -e "Domain         : ${domain}"
-echo -e "Port Direct    : $vless1"
-echo -e "Port Splice    : $vless1"
-echo -e "id             : ${uuid}"
-echo -e "path           : /"
-echo -e "================================="
-echo -e "Link Direct    : ${vless_direct}"
-echo -e "================================="
-echo -e "Link Splice    : ${vless_splice}"
-echo -e "================================="
-echo -e "Expired On     : $exp"
-echo -e ""
+echo -e "*********************************"
+echo -e "          ข้อมูลบัญชี"
+echo -e "ชื่อ​             : ${user}"
+echo -e "โดเมน​           : ${domain}"
+echo -e "พอร์ต Direct    : $vless1"
+echo -e "พอร์ต Splice    : $vless1"
+echo -e "ไอดี​            : ${uuid}"
+echo -e "เส้นทาง          : /"
+echo -e "วันหมดอายุ​       : $exp"
+echo -e "*********************************"
+echo -e "ลิงก์ Direct     : ${vless_direct}"
+echo -e "*********************************"
+echo -e "ลิงก์ Splice     : ${vless_splice}"
+echo -e "*********************************"
+echo -e "สคริปโดยเอเจ" 
 
