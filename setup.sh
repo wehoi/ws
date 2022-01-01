@@ -113,11 +113,10 @@ echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 81"  | tee -a log-install.txt
 echo "   - V2RAY Vmess TLS         : 8443"  | tee -a log-install.txt
 echo "   - V2RAY Vmess None TLS    : 80"  | tee -a log-install.txt
-echo "   - V2RAY Vless TLS         : 8442"  | tee -a log-install.txt
+echo "   - V2RAY Vless TLS         : 2083"  | tee -a log-install.txt
 echo "   - V2RAY Vless None TLS    : 8880"  | tee -a log-install.txt
-echo "   - Trojan                  : 2443"  | tee -a log-install.txt
-echo "   - Vless Xray Splice       : 443"  | tee -a log-install.txt
-echo "   - Vless Xray Direct       : 443"  | tee -a log-install.txt
+echo "   - Trojan                  : 2087"  | tee -a log-install.txt
+echo "   - Xray Vless TCP XTLS     : 443"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Bangkok (GMT +7)"  | tee -a log-install.txt
