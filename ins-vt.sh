@@ -403,7 +403,7 @@ cat> /etc/v2ray/trojan.json <<END
   },
   "inbounds": [
     {
-      "port": 2443,
+      "port": 2087,
       "protocol": "trojan",
       "settings": {
         "clients": [
