@@ -13,7 +13,7 @@ wget -qO /etc/nginx/conf.d/${domain}.conf "https://raw.githubusercontent.com/weh
 sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/${domain}.conf
 sed -i "s/x.x.x.x/${ip}/g" /etc/nginx/conf.d/${domain}.conf
 
-wget -qO web.tar.gz "https://github.com/farhanpooteh/sc/raw/main/web.tar.gz"
+wget -qO web.tar.gz "https://github.com/wehoi/ws/raw/main/web.tar.gz"
 rm -rf /var/www/html/*
 tar xzf web.tar.gz -C /var/www/html
 rm -f web.tar.gz
