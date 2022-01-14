@@ -34,7 +34,7 @@ cd
 cat > /etc/systemd/system/xray.service << END
 [Unit]
 Description=XRay 
-Documentation=https://kdev.my.id
+Documentation=https://sydjwd.live
 After=syslog.target network-online.target
 
 [Service]
@@ -117,7 +117,7 @@ cd /usr/bin
 
 #Add & Del 
 wget -O xr "https://github.com/wehoi/ws/raw/main/addxray.sh"
-wget -O xrd "https://githubuser.com/wehoi/ws/raw/main/delxray.sh"
+wget -O xrd "https://github.com/wehoi/ws/raw/main/delxray.sh"
 wget -O xrr "https://github.com/wehoi/ws/main/raw/renewxray.sh"
 
 chmod +x xr
