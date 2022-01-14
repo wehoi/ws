@@ -116,9 +116,9 @@ systemctl start xray
 cd /usr/bin
 
 #Add & Del 
-wget -O xr "https://raw.githubusercontent.com/wehoi/ws/main/addxray.sh"
-wget -O xrd "https://raw.githubusercontent.com/wehoi/ws/main/delxray.sh"
-wget -O xrr "https://raw.githubusercontent.com/wehoi/ws/main/renewxray.sh"
+wget -O xr "https://github.com/wehoi/ws/raw/main/addxray.sh"
+wget -O xrd "https://githubuser.com/wehoi/ws/raw/main/delxray.sh"
+wget -O xrr "https://github.com/wehoi/ws/main/raw/renewxray.sh"
 
 chmod +x xr
 chmod +x xrd
