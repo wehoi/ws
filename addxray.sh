@@ -7,7 +7,7 @@ NC="\e[0m"
 
 MYIP=$(wget -qO- icanhazip.com);
 echo "Checking Auth For Permission"
-
+clear
 
 # // Input
 read -p "Username   : " username
