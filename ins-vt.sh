@@ -519,8 +519,6 @@ systemctl enable v2ray@vnone.service
 systemctl start v2ray@vnone.service
 systemctl enable v2ray@trojan.service
 systemctl start v2ray@trojan.service
-systemctl enable xray@service
-systemctl start xray@service
 systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
