@@ -535,10 +535,6 @@ wget -O vrr "https://github.com/wehoi/ws/raw/main/renew-ws.sh"
 wget -O vsr "https://github.com/wehoi/ws/raw/main/renew-vless.sh"
 wget -O tjr "https://github.com/wehoi/ws/raw/main/renew-tr.sh"
 wget -O cert "https://github.com/wehoi/ws/raw/main/cert.sh"
-wget -O xr "https://github.com/wehoi/ws/raw/main/add-xray.sh"
-wget -O xrd "https://github.com/wehoi/ws/raw/main/del-xray.sh"
-wget -O xrr "https://github.com/wehoi/ws/raw/main/renew-xray.sh"
-wget -O port-xray "https://github.com/wehoi/ws/raw/main/port-xray.sh"
 chmod +x vr
 chmod +x vs
 chmod +x tj
@@ -552,7 +548,3 @@ chmod +x vrr
 chmod +x vsr
 chmod +x tjr
 chmod +x cert
-chmod +x xr
-chmod +x xrd
-chmod +x xrr
-chmod +x port-xray
