@@ -124,5 +124,3 @@ wget -O xrrr "https://github.com/wehoi/ws/main/raw/renewxray.sh"
 chmod +x xrr
 chmod +x xrrd
 chmod +x xrrr
-cd
-rm -f setup-xray.sh
