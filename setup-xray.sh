@@ -4,11 +4,6 @@
 # Auther : AJ
 # ===================================
 
-# // Silakan Isi Bawah Ini
-export port='443' # >> Port Vless RPRX Direct
-export Cert_path='etc/v2ray/v2ray.crt' # >> Certificate Path
-export Cert_Key_Path='/etc/v2ray/v2ray.key' # >> Certificate Key Path
-export Your_Domain='/etc/v2ray/domain' # >> Your Domain
 
 # // Creating UUID
 export uuid=$(cat /proc/sys/kernel/random/uuid)
@@ -55,7 +50,7 @@ cat > /etc/xray/xrayxtls.json << END
 {
   "inbounds": [
     {
-      "port": ${port},
+      "port": 443,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -86,8 +81,8 @@ cat > /etc/xray/xrayxtls.json << END
           "minVersion": "1.2",
           "certificates": [
             {
-              "certificateFile": "${Cert_path}",
-              "keyFile": "${Cert_Key_Path}"
+              "certificateFile": "etc/v2ray/v2ray.crt",
+              "keyFile": "/etc/v2ray/v2ray.key}"
             }
           ]
         }
@@ -116,12 +111,12 @@ systemctl start xray
 cd /usr/bin
 
 #Add & Del 
-wget -O xr "https://github.com/wehoi/ws/raw/main/addxray.sh"
-wget -O xrd "https://github.com/wehoi/ws/raw/main/delxray.sh"
-wget -O xrr "https://github.com/wehoi/ws/main/raw/renewxray.sh"
+wget -O xrr "https://github.com/wehoi/ws/raw/main/addxray.sh"
+wget -O xrrd "https://github.com/wehoi/ws/raw/main/delxray.sh"
+wget -O xrrr "https://github.com/wehoi/ws/main/raw/renewxray.sh"
 
-chmod +x xr
-chmod +x xrd
 chmod +x xrr
+chmod +x xrrd
+chmod +x xrrr
 cd
 rm -f setup-xray.sh
