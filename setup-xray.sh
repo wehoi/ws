@@ -3,8 +3,6 @@
 # Xray Quick Setup
 # Auther : AJ
 # ===================================
-
-
 # // Creating UUID
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
