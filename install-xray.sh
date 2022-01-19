@@ -18,7 +18,7 @@ apt install python3 -y
 mkdir -p /usr/local/ctechdidik/
 
 # // Installation XRay Core
-wget -q -O /usr/local/ctechdidik/xray-mini "https://raw.githubusercontent.com/mdrms/kkk/main/xray-mini" 
+wget -q -O /usr/local/ctechdidik/xray-mini "https://raw.githubusercontent.com/wehoi/ws/main/xray-mini" 
 chmod +x /usr/local/ctechdidik/xray-mini
 
 # // Make XRay Mini Root Folder
@@ -177,12 +177,13 @@ systemctl enable xray-mini@vless-splice
 systemctl start xray-mini@vless-splice
 
 # // Downloading Menu
-wget -q -O /usr/bin/add-xray "https://raw.githubusercontent.com/mdrms/kkk/main/add-xray.sh"
-wget -q -O /usr/bin/del-xray "https://raw.githubusercontent.com/mdrms/kkk/main/del-xray.sh"
-wget -q -O /usr/bin/renew-xray "https://raw.githubusercontent.com/mdrms/kkk/main/renew-xray.sh"
-chmod +x /usr/bin/add-xray
-chmod +x /usr/bin/del-xray
-chmod +x /usr/bin/renew-xray
+cd /usr/bin
+wget -O vxr "https://raw.githubusercontent.com/wehoi/ws/main/add-xray.sh"
+wget -O vxrd "https://raw.githubusercontent.com/wehoi/ws/main/del-xray.sh"
+wget -O vxrr "https://raw.githubusercontent.com/wehoi/ws/main/renew-xray.sh"
+chmod +x vxr
+chmod +x vxrd
+chmod +x vxrr
 
 # // Remove Not Used Files
 rm -f install-xray.sh
