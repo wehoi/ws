@@ -11,18 +11,18 @@ vless1="$( cat /etc/xray-mini/vless-direct.json | grep -w port | awk '{print $2}
 vless2="$( cat /etc/xray-mini/vless-splice.json | grep -w port | awk '{print $2}' | sed 's/,//g' )"
 
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
+		read -rp "ชื่อ : " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/xray-mini/vless-direct.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
-			echo "A client with the specified name was already created, please choose another name."
+			echo "มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
 			exit 1
 		fi
 	done
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "Expired (days): " masaaktif
+read -p "วันหมดอายุ: " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 
 # // Input To Server
@@ -31,8 +31,8 @@ sed -i '/#XRay$/a\### '"$user $exp"'\
 sed -i '/#XRay$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","flow": "xtls-rprx-splice","email": "'""$user""'"' /etc/xray-mini/vless-splice.json
 
-vless_direct="vless://${uuid}@${domain}:${vless1}?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=samproject.tech#$user"
-vless_splice="vless://${uuid}@${domain}:${vless1}?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=samproject.tech#$user"
+vless_direct="vless://${uuid}@${domain}:${vless1}?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bughost#$user"
+vless_splice="vless://${uuid}@${domain}:${vless1}?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=bughost#$user"
 
 # // Restarting Service
 systemctl stop xray-mini@vless-direct
@@ -48,18 +48,18 @@ systemctl restart xray-mini@vless-splice
 
 clear
 echo -e ""
-echo -e "==========-XRAYS/VLESS-=========="
-echo -e "Remarks        : ${user}"
-echo -e "Domain         : ${domain}"
-echo -e "Port Direct    : $vless1"
-echo -e "Port Splice    : $vless1"
-echo -e "id             : ${uuid}"
-echo -e "path           : /xray"
-echo -e "================================="
-echo -e "Link Direct    : ${vless_direct}"
-echo -e "================================="
-echo -e "LInk Splice    : ${vless_splice}"
-echo -e "================================="
-echo -e "Gantikan samproject.tech dengan BUG anda"
-echo -e "================================="
-echo -e "Expired On     : $exp"
+echo -e "*********************************"
+echo -e "         ข้อมูลบัญชี"
+echo -e "ชื่อ           : ${user}"
+echo -e "โดเมน         : ${domain}"
+echo -e "พอร์ท Direct  : $vless1"
+echo -e "พอร์ท Splice  : $vless1"
+echo -e "ไอดี          : ${uuid}"
+echo -e "เส้นทาง        : /xray"
+echo -e "วันหมดดอายุ    : $exp"
+echo -e "*********************************"
+echo -e "ลิงก์ Direct    : ${vless_direct}"
+echo -e "*********************************"
+echo -e "ลิงก์ฺ Splice    : ${vless_splice}"
+echo -e "*********************************"
+echo -e "สคริปโดยเอเจ" 
