@@ -87,6 +87,8 @@ rm -f /root/setup-xray.sh
 history -c
 echo "1.2" > /home/ver
 clear
+#cert
+cert
 echo " echo ' ยินดีต้อนรับ   ' " >> .profile
 echo " echo ' AJ MINI SCRIPT        '" >> .profile
 echo " echo ' ติดต่อ เจ้าของสคริป t.me/yallaaj     '" >> .profile
