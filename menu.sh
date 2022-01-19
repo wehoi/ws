@@ -118,10 +118,9 @@ echo -e "* tjc          : ตรวจสอบผู้ใช้งานบั
 echo -e "* trr          : ต่ออายุบัญชี TROJAN"
 echo -e "************************************************************" | lolcat
 echo -e "                     XRAY"
-echo -e "* xr           : สร้างบัญชี XRAY"
-echo -e "* xrd          : ลบบัญชี XRAY"
-echo -e "* xrc          : ตรวจสอบผู้ใช้งานบัญชี XRAY"             
-echo -e "* xrr          : ต่ออายุบัญชี XRAY"
+echo -e "* vxr          : สร้างบัญชี XRAY"
+echo -e "* vxrd         : ลบบัญชี XRAY"             
+echo -e "* vxrr         : ต่ออายุบัญชี XRAY"
 echo -e "************************************************************" | lolcat     
 echo -e "                    ตั้งค่าระบบ"
 echo -e "* cert         : ต่ออายุ Certificate ของบัญชี V2ray" 
