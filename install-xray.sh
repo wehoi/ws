@@ -48,8 +48,8 @@ EOF
 # // String
 ssl_path_crt="/etc/v2ray/v2ray.crt"
 ssl_path_key="/etc/v2ray/v2ray.key"
-Port1=8181
-Port2=6769
+Port1=8787
+Port2=443
 uuid=$(cat /proc/sys/kernel/random/uuid)
 
 # // Vless Splice
