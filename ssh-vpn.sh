@@ -395,6 +395,7 @@ wget -O port "https://github.com/wehoi/ws/raw/main/change.sh"
 wget -O port-ovpn "https://github.com/wehoi/ws/raw/main/port-ovpn.sh"
 wget -O port-ssl "https://github.com/wehoi/ws/raw/main/port-ssl.sh"
 wget -O port-tr "https://github.com/wehoi/ws/raw/main/port-tr.sh"
+wget -O port-xray "https://github.com/wehoi/ws/raw/main/port-xray.sh"
 wget -O port-squid "https://github.com/wehoi/ws/raw/main/port-squid.sh"
 wget -O port-ws "https://github.com/wehoi/ws/raw/main/port-ws.sh"
 wget -O port-vless "https://github.com/wehoi/ws/raw/main/port-vless.sh"
@@ -418,6 +419,7 @@ chmod +x port
 chmod +x port-ovpn
 chmod +x port-ssl
 chmod +x port-tr
+chmod +x port-xray
 chmod +x port-squid
 chmod +x port-ws
 chmod +x port-vless
