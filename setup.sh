@@ -76,11 +76,11 @@ echo '============================================='
 sleep 3
 wget https://github.com/wehoi/ws/raw/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 echo '============================================='
-echo '        กำลังติดตั้ง V2RAY & XRAY​ CORE'
+echo '        กำลังติดตั้ง V2RAY & XRAY CORE'
 echo '============================================='
 sleep 3
 wget https://github.com/wehoi/ws/raw/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
-wget https://raw.githubusercontent.com/wehoi/ws/main/setup-xray.sh && chmod +x setup-xray.sh && screen - S xray ./setup-xray.sh
+wget https://raw.githubusercontent.com/wehoi/ws/main/main/install-xray.sh && chmod +x install-xray.sh && screen -S v2ray ./install-xray.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/ins-vt.sh
 rm -f /root/setup-xray.sh
@@ -89,7 +89,7 @@ echo "1.2" > /home/ver
 clear
 echo " echo ' ยินดีต้อนรับ   ' " >> .profile
 echo " echo ' AJ MINI SCRIPT        '" >> .profile
-echo " echo ' ติดต่อ​เจ้าของสคริป​ t.me/yallaaj     '" >> .profile
+echo " echo ' ติดต่อ เจ้าของสคริป t.me/yallaaj     '" >> .profile
 echo '============================================='
 echo "                ติดตั้งสำเร็จแล้ว"
 echo '============================================='
@@ -106,13 +106,18 @@ echo "   - Stunnel4                : 444, 777"  | tee -a log-install.txt
 echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
 echo "   - Squid Proxy             : 3128, 8080 (limit to IP Server)"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
-echo "   - Nginx                   : 81"  | tee -a log-install.txt
+echo "   - Nginx                   : 81"  | tee echo "   - OHP HTTP                : 8181"| tee -a log-install.txt 
+echo "   - OHP OVPN                : 8282"| tee -a log-install.txt
+echo "   - SSH WS                  : 2082"| tee -a log-install.txt 
+echo "   - SSL WS                  : 2083"| tee -a log-install.txt
+echo "   - SSL OVPN                : 2084"| tee -a log-install.txt-a log-install.txt
 echo "   - V2RAY Vmess TLS         : 8443"  | tee -a log-install.txt
 echo "   - V2RAY Vmess None TLS    : 80"  | tee -a log-install.txt
-echo "   - V2RAY Vless TLS         : 2083"  | tee -a log-install.txt
+echo "   - V2RAY Vless TLS         : 2096"  | tee -a log-install.txt
 echo "   - V2RAY Vless None TLS    : 8880"  | tee -a log-install.txt
-echo "   - Trojan                  : 2087"  | tee -a log-install.txt
-echo "   - Xray Vless TCP XTLS     : 443"  | tee -a log-install.txt
+echo "   - Trojan                  : 443"  | tee -a log-install.txt
+echo "   - XRAY DIRECT             : 6769"  | tee -a log-install.txt
+echo "   - XRAY SPLICE             : 6769"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Bangkok (GMT +7)"  | tee -a log-install.txt
