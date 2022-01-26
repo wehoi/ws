@@ -94,54 +94,6 @@ Restart=on-failure
 WantedBy=multi-user.target
 END
 
-
-# Install OHP server
-echo 'Installing ohpserver'
-wget -q -O /usr/bin/ohp https://scrzoke.000webhostapp.com/ohp && chmod +x /usr/bin/ohp
-
-# Setup ohpserver http
-echo 'Setup ohpserver'
-cat > /etc/systemd/system/ohpssh.service << END
-[Unit]
-Description=Daemonize OpenHTTP Puncher Server
-Wants=network.target
-After=network.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/ohp -port 8181 -proxy 127.0.0.1:8080 -tunnel 127.0.0.1:22
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# Setup ohpserver openvpn
-echo 'Setup ohpserver'
-cat > /etc/systemd/system/ohpovpn.service << END
-[Unit]
-Description=Daemonize OpenHTTP Puncher Server
-Wants=network.target
-After=network.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/ohp -port 8282 -proxy 127.0.0.1:8080 -tunnel 127.0.0.1:443
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
 [Unit]
